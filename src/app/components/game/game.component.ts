@@ -14,6 +14,7 @@ import { formatDate } from '@angular/common';
 export class GameComponent implements OnInit {
   words : word[] = [];
   wordSelected : word = null;
+  totalLetters : number = 0;
   lettersCorrects : String[] = [];
   gameService = inject(GameService);
   authService = inject(AuthService);
@@ -32,6 +33,7 @@ export class GameComponent implements OnInit {
         next : (data) => {
           this.words = data;
           this.wordSelected = this.getRandomWord();
+          this.totalLetters = this.wordSelected.word.split('').length;
           console.log(this.wordSelected);
 
         },
@@ -39,6 +41,25 @@ export class GameComponent implements OnInit {
           alert("Error al cargar las palabras")
         }
     });
+  }
+  getWordWithGuions(): string {
+    const letterCount: { [key: string]: number } = {};
+  
+    // Contar las letras correctas descubiertas
+    this.lettersCorrects.forEach(letter => {
+      const lowerCaseLetter = letter.toLowerCase();
+      letterCount[lowerCaseLetter] = (letterCount[lowerCaseLetter] || 0) + 1;
+    });
+  
+    return this.wordSelected.word.split('').map(letter => {
+      const lowerCaseLetter = letter.toLowerCase();
+      if (letterCount[lowerCaseLetter] > 0) {
+        letterCount[lowerCaseLetter]--;
+        return letter;
+      } else {
+        return '_';
+      }
+    }).join(' ');
   }
 
   checkLetter(letter: string): void {

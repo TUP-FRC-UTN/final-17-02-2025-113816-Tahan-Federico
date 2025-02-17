@@ -21,7 +21,6 @@ export class LoginComponent {
       const userName = this.form.controls['user']?.value;
       const password = this.form.controls['password']?.value;
       const session = this.service.login(userName, password)
-      this.service.redirectToRoleBasedPage();
 
   }
 }

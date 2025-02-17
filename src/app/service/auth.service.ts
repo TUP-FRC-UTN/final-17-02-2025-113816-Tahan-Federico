@@ -31,6 +31,7 @@ export class AuthService {
     .subscribe({
       next : (data) => {
         this.UserSubject.next(data);
+        this.redirectToRoleBasedPage();
         return true;
       },
       error : (data) => {
