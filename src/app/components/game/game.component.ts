@@ -85,6 +85,11 @@ export class GameComponent implements OnInit {
       if(this.intents == 6 || this.wordSelected.word.split('').length == this.lettersCorrects.length)
         {
           this.saveScore();
+          if(this.wordSelected.word.split('').length == this.lettersCorrects.length){
+            alert("Felicidades ganaste");
+          }else{
+            alert("Perdedor!");
+          }
         }
     }else{
       alert("No se puede realizar más intentos");
