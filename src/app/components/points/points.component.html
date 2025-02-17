@@ -1,0 +1,28 @@
+<div class="card">
+    <div class="card-body">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                  <th scope="col">Jugador</th>
+                  <th scope="col">Palabra</th>
+                  <th scope="col">Intentos restantes</th>
+                  <th scope="col">Puntuacion</th>
+                  <th scope="col">Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(item of scores; track $index){
+                    <tr>
+                        <td>{{item.playerName}}</td>
+                        <td>{{item.word}}</td>
+                        <td>{{item.attemptsLeft}}</td>
+                        <td>{{item.score}}</td>
+                        <td>{{item.date}}</td>
+                    </tr>
+                }
+            </tbody>
+            
+        </table>
+
+    </div>
+  </div>

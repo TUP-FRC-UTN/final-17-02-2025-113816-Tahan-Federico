@@ -1,0 +1,69 @@
+<div >
+<h1>Juego del Ahorcado</h1>
+
+
+<div>
+    <svg width="200" height="300">
+        <!-- Dibujo del personaje -->
+        @if(intent_errors == 1){
+            <circle cx="150" cy="120" r="20" fill="black" /> <!--cabeza--->
+        }@else if (intent_errors == 2)
+        {
+            <circle cx="150" cy="120" r="20" fill="black" /> <!--cabeza--->
+            <line x1="150" y1="140" x2="150" y2="200" stroke="black" /> <!--cuerpo-->
+
+        }@else if (intent_errors == 3)
+        {
+            <circle cx="150" cy="120" r="20" fill="black" /> <!--cabeza--->
+            <line x1="150" y1="140" x2="150" y2="200" stroke="black" /> <!--cuerpo-->
+            <line x1="150" y1="150" x2="130" y2="180" stroke="black"/> <!--brazo izquierdo-->
+
+        }
+        @else if (intent_errors == 4)  
+        {
+            <circle cx="150" cy="120" r="20" fill="black" /> <!--cabeza--->
+            <line x1="150" y1="140" x2="150" y2="200" stroke="black" /> <!--cuerpo-->
+            <line x1="150" y1="150" x2="130" y2="180" stroke="black"/> <!--brazo izquierdo-->
+            <line x1="150" y1="150" x2="170" y2="180" stroke="black"  /> <!--brazo derecho-->
+
+        }
+        @else if (intent_errors == 5)
+        {
+            <circle cx="150" cy="120" r="20" fill="black" /> <!--cabeza--->
+            <line x1="150" y1="140" x2="150" y2="200" stroke="black" /> <!--cuerpo-->
+            <line x1="150" y1="150" x2="130" y2="180" stroke="black"/> <!--brazo izquierdo-->
+            <line x1="150" y1="150" x2="170" y2="180" stroke="black"  /> <!--brazo derecho-->
+            <line x1="150" y1="200" x2="130" y2="240" stroke="black"  /> <!--pierna izquierda-->
+
+        }
+        @else if (intent_errors == 6)
+        {
+            <circle cx="150" cy="120" r="20" fill="black" /> <!--cabeza--->
+            <line x1="150" y1="140" x2="150" y2="200" stroke="black" /> <!--cuerpo-->
+            <line x1="150" y1="150" x2="130" y2="180" stroke="black"/> <!--brazo izquierdo-->
+            <line x1="150" y1="150" x2="170" y2="180" stroke="black"  /> <!--brazo derecho-->
+            <line x1="150" y1="200" x2="130" y2="240" stroke="black"  /> <!--pierna izquierda-->
+            <line x1="150" y1="200" x2="170" y2="240" stroke="black"  /> <!--pierna derecha-->
+        }
+
+    </svg>
+
+    <div>
+        <p>Letras Incorrectas: {{ intent_errors }}</p>
+        <p>Letras Correctas: {{ lettersCorrects.length }}</p>
+
+    </div>
+</div>
+
+
+
+<div>
+    @for(item of letters; track $index){
+        <button type="button" (click)="checkLetter(item)" class="btn btn-outline-primary">{{item}}</button>
+    }
+    
+</div>
+<div>
+    <h5>Intentos Restantes {{ MAX_INTENTS - intents }}</h5>
+</div>
+</div>
