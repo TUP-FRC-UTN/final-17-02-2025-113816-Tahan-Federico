@@ -44,9 +44,7 @@ export class GameComponent implements OnInit {
   }
   getWordWithGuions(): string {
     const letterCount: { [key: string]: number } = {};
-  
-    // Contar las letras correctas descubiertas
-    this.lettersCorrects.forEach(letter => {
+      this.lettersCorrects.forEach(letter => {
       const lowerCaseLetter = letter.toLowerCase();
       letterCount[lowerCaseLetter] = (letterCount[lowerCaseLetter] || 0) + 1;
     });
