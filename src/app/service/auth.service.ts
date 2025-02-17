@@ -62,6 +62,13 @@ export class AuthService {
     }
     return null;
   };
+
+  getUserUserName() : string{
+    if(this.UserSubject != null && this.UserSubject != undefined){
+      return this.UserSubject.value[0].username;
+    }
+    return null;
+  };
   logout(): void {
     this.UserSubject.next(null);
     this.router.navigate(['login']);

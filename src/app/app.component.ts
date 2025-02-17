@@ -21,4 +21,8 @@ export class AppComponent {
     return this.authService.isAdmin();
   }
 
+  getUserUserName(){
+    this.authService.getUserUserName();
+  }
+
 }
